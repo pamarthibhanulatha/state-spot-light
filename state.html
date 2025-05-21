@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>State Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            width: 100%;
+        }
+
+        .container {
+            padding: 20px;
+            width: 100%;
+        }
+
+        .state-details {
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 95%;
+            margin: 0 auto;
+        }
+
+        .state-details img {
+            width: 100%;
+            max-width: 800px;
+            height: auto;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .state-details h1 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .state-details p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .state-details h2 {
+            color: #ae4fc3;
+            margin-bottom: 10px;
+        }
+
+        .state-details .info {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body style="background-color: gray;">
+    <div class="container">
+        <div class="state-details" id="state-details">
+            
+        </div>
+    </div>
+
+    <script>
+        const selectedState = JSON.parse(localStorage.getItem('selectedState'));
+        const stateDetails = document.getElementById('state-details');
+
+        if (selectedState) {
+            stateDetails.innerHTML = `
+            <div style="background-color: lightgray; padding: 40px;">
+            <div style="background-color: white; padding: 20px; border-radius: 10px;">
+            <div class="info" style="background-color: lavender; padding: 20px; border-radius: 10px;">
+                    <h1>${selectedState.name}</h1><br>
+
+                    <h2>Language</h2>
+                    <p style="font-weight: bold; color: #3498db; font-size: 18px;">
+                    ${selectedState.language}</p>
+
+
+                    <h2>Capital</h2>
+                    <p style="font-weight: bold; color: #3498db; font-size: 18px;">${selectedState.capital}<br>
+                    <img src="${selectedState.capitalImg}" alt="${selectedState.name} Capital" style="width: 500px; height: auto;"></p>
+                    
+                    <h2>Famous Tourist Spot</h2>
+                    <p style="font-weight: bold; color: #3498db; font-size: 18px;">${selectedState.touristSpot}<br>
+                    <img src="${selectedState.touristImg}" alt="${selectedState.name} Tourist Spot" style="width: 500px; height: auto;"></p>
+                    
+                    <h2>Dressing:</h2>
+                    <p style="font-weight: bold; color: #3498db; font-size: 18px;">${selectedState.dressing}<br>
+                    <img src="${selectedState.dressingImg}" alt="${selectedState.name} Dressing" style="width: 500px; height: auto;"></p>
+                    
+                    <h2>Famous Food</h2>
+                    <p style="font-weight: bold; color: #3498db; font-size: 18px;">${selectedState.food}<br>
+                    <img src="${selectedState.foodImg}" alt="${selectedState.name} Food" style="width: 500px; height: auto;"></p>
+                    
+                    <h2>Famous Festival</h2>
+                    <p style="font-weight: bold; color: #3498db; font-size: 18px;">${selectedState.festival}<br>
+                    <img src="${selectedState.festivalImg}" alt="${selectedState.name} Festival" style="width: 500px; height: auto;"></p>
+
+                    <h2>Famous River</h2>
+                    <p style="font-weight: bold; color: #3498db; font-size: 18px;">${selectedState.river}<br>
+                    <img src="${selectedState.riverImg}" alt="${selectedState.name} River" style="width: 500px; height: auto;"></p>
+
+
+                    <h2>Famous Dance:</h2>
+                    <p style="font-weight: bold; color: #3498db; font-size: 18px;">${selectedState.dance}<br>
+                    <img src="${selectedState.danceImg}" alt="${selectedState.name} Dance" style="width: 500px; height: auto;"></p>
+                    
+
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

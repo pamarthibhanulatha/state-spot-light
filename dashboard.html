@@ -1,0 +1,626 @@
+<!-- The main state listing page HTML (index.html) remains the same) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Indian States Info</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-image: url("back.jpg");
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0;
+            color: #333;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .card {
+            background: #a3d1ea;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card h2 {
+            background-color: #a3d1ea;
+            color: #0c0c0c;
+            margin: 0;
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>STATE SPOT LIGHT</h1>
+
+    <button onclick="logout()" style="margin-left: 1000px;">Logout</button>
+
+    <script>
+        function logout() {
+            localStorage.removeItem("loggedInUser");
+            window.location.href = "index.html"; // Redirect back to login
+        }
+    </script>
+
+    <div class="grid-container" id="state-grid">
+        <!-- Cards will be dynamically generated here -->
+         
+    </div>
+
+    
+
+    <iframe 
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12626.302919292685!2d-122.4194159!3d37.7749295!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c7e8a3b1f%3A0x8e253e8b3d2a5f1d!2sSan%20Francisco%2C%20CA!5e0!3m2!1sen!2sus!4v1710000000000" 
+    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy">
+  </iframe>
+
+    <script>
+        const statesData = [
+        { 
+            name: "Andhra Pradesh", 
+            capital: "Amaravati",
+            capitalImg:"./andhra/amaravathi.jpg", 
+            dressing: "Dhoti and Saree", 
+            dressingImg:"./andhra/apcouple.jpg", 
+            food: "Pulihora", 
+            foodImg:"./andhra/pulihora.jpg",
+            touristSpot: "Araku", 
+            touristImg: "./andhra/araku.jpg",   
+            festival: "Sankranthi", 
+            festivalImg:"./andhra/sankranthi.jpg",
+            river: "Godavari",
+            riverImg:"./andhra/godavari.jpg",
+            dance: "Kuchipudi", 
+            danceImg:"./andhra/dance.jpg",
+            language: "Telugu" 
+            },
+            { 
+            name: "Arunachal Pradesh", 
+            capital: "Itanagar",
+            capitalImg:"./arunachal/arun_capital.jpg", 
+            dressing: "Traditional Shawls",
+            dressingImg: "./arunachal/arun_dressing.jpg", 
+            food: "Thukpa",
+            foodImg:"./arunachal/arun_food.jpg",
+            touristSpot: "Tawang Monastery", 
+            touristImg: "./arunachal/tourist.jpg", 
+            festival: "Losar",
+            festivalImg:"./arunachal/festival.jpg",
+            river: "Brahmaputra", 
+            riverImg:"./arunachal/river.jpg",
+            dance: "Bardo Chham",
+            danceImg:"./arunachal/dance.jpg",
+            language: "English" 
+        },
+            { 
+            name: "Assam", 
+            capital: "Dispur", 
+            capitalImg:"./assam/captal.jpg",
+            dressing: "Mekhela Chador", 
+            dressingImg: "./assam/dress.jpg", 
+            food: "Pithas", 
+            foodImg:"./assam/food.jpg",
+            touristSpot: "Kaziranga National Park",
+            touristImg: "./assam/tourist.jpg",
+            festival: "Bihu",
+            festivalImg:"./assam/festival.jpg",
+            river: "Brahmaputra", 
+            riverImg:"./assam/river.jpg", 
+            dance: "Bihu Dance", 
+            danceImg:"./assam/dance.jpg",
+            language: "Assamese"
+             },
+            {
+            name: "Bihar",
+            capital: "Patna", 
+            capitalImg:"./bihar/capital.jpg",
+            dressing: "Lungi and Sari",
+            dressingImg: "./bihar/dressing.jpg",
+            food: "Litti Chokha",
+            foodImg:"./bihar/food.jpg",
+            touristSpot: "Rajgir",
+            touristImg: "./bihar/tourist.jpg",
+            festival: "Chhath",
+            festivalImg:"./bihar/festival.jpg",
+            river: "Ganga",
+            riverImg:"./bihar/river.jpg", 
+            dance: "Bidesia", 
+            danceImg:"./bihar/dance.jpg",
+            language: "Hindi" 
+            },
+
+            {
+                name: "Chhattisgarh",
+                capital: "Raipur", 
+                capitalImg:"./chhattisgarh/capital.jpg",
+                dressing: "Saree and Dhoti", 
+                dressingImg: "./chhattisgarh/dressing.jpg", 
+                food: "Muthia", 
+                foodImg:"./chhattisgarh/food.jpg",
+                touristSpot: "Chitrakoot Falls", 
+                touristImg: "./chhattisgarh/tourist.jpg",
+                festival: "Bastar Dussehra", 
+                festivalImg:"./chhattisgarh/festiival.jpg",
+                river: "Mahanadi",
+                riverImg:"./chhattisgarh/river.jpg", 
+                dance: "Saila Dance",
+                danceImg:"./chhattisgarh/dance.jpg",
+                language: "Chhattisgarhi"
+                },
+
+            { 
+                name: "Goa",
+                capital: "Panaji", 
+                capitalImg:"./goa/capital.jpg",
+                dressing: "Pano Bhaju",
+                dressingImg: "./goa/dress.jpg", 
+                food: "Goan Fish Curry",
+                foodImg:"./goa/food.jpg",
+                touristSpot: "Bom Jesus Basilica", 
+                touristImg: "./goa/tourist1.jpg",
+                festival: "Carnival",
+                festivalImg:"./goa/festival.jpg",
+                river: "Zuari River",
+                riverImg:"./goa/river.jpg",
+                dance: "Fugdi",
+                danceImg:"./goa/dance.jpg",
+                language: "Konkani"
+            },
+
+            {
+                name: "Gujarat", 
+                capital: "Gandhinagar", 
+                capitalImg:"./gujarat/capital.jpg",
+                dressing: "Kediyu and Chaniyo",
+                dressingImg: "./gujarat/dress.jpg",
+                food: "Dhokla", 
+                foodImg:"./gujarat/food.jpg",
+                touristSpot: "Polo Forest", 
+                touristImg: "./gujarat/tourist.jpg",
+                festival: "Navratri",
+                festivalImg:"./gujarat/festival.jpg",
+                river: "Sabarmati", 
+                riverImg:"./gujarat/river.jpg",
+                dance: "Garba",
+                danceImg:"./gujarat/dance.jpg",
+                language: "Gujarati" 
+                },
+
+            {
+                name: "Haryana", 
+                capital: "Chandigarh", 
+                capitalImg:"./haryana/capital.jpg",
+                dressing: "Kurta-Pajama", 
+                dressingImg: "./haryana/dress.jpg",
+                food: "Kair Sangri ki Sabzi",
+                foodImg:"./haryana/food.jpg",
+                touristSpot: "Sultanpur Bird Sanctuary", 
+                touristImg: "./haryana/tourist.jpg",
+                festival: "Holi",
+                festivalImg:"./haryana/festival.jpg",
+                river: "Yamuna",
+                riverImg:"./haryana/river.jpg",
+                dance: "Saang", 
+                danceImg:"./haryana/dance.jpg",
+                language: "Hindi" 
+                },
+
+            {
+                name: "Himachal Pradesh",
+                capital: "Shimla",
+                capitalImg:"./himachal/capital.jpg",
+                dressing: "Pahari Dress",
+                dressingImg:"./himachal/dress.jpg",
+                food: "Babru",
+                foodImg:"./himachal/food",
+                touristSpot: "Kullu", 
+                touristImg: "./himachal/tourist.jpg",
+                festival: "Kullu Dussehra",
+                festivalImg:"./himachal/festival.jpg",
+                river: "Beas",
+                riverImg:"./himachal/river.jpg",
+                dance: "Nati",
+                danceImg:"./himachal/dance.jpg", 
+                language: "Hindi" 
+                   
+            },
+            {
+                name: "Jharkhand",
+                capital: "Ranchi",
+                capitalImg:"./Jharkhand/capital.jpg",
+                dressing: "Saree and Dhoti",
+                dressingImg: "./Jharkhand/dress.jpg",
+                food: "Thekua",
+                foodImg:"./Jharkhand/food.jpg",
+                touristSpot: "Deoghar",
+                touristImg: "./Jharkhand/tourist.jpg",
+                festival: "Sarhul",
+                festivalImg:"./Jharkhand/festival.jpg",
+                river: "Damodar",
+                riverImg:"./Jharkhand/river.jpg",
+                dance: "Jhumair Dance",
+                danceImg:"./Jharkhand/dance.jpg", 
+                language: "Hindi"
+
+                },
+            { 
+                name: "Karnataka", 
+                capital: "Bengaluru",
+                capitalImg:"./Karnataka/capital.jpg",
+                dressing: "Dhoti and Saree",
+                dressingImg: "./Karnataka/dress.jpg",
+                food: "Bisi Bele Bath",
+                foodImg:"./Karnataka/food.jpg",
+                touristSpot: "Mysore",
+                touristImg: "./Karnataka/tourist.jpg",
+                festival: "Ugadi", 
+                festivalImg:"./Karnataka/festival.jpg",
+                river: "Kaveri", 
+                riverImg:"./Karnataka/river.jpg",
+                dance: "Yakshagana",
+                danceImg:"./Karnataka/dance.jpg",
+                language: "Kannada"
+
+                },
+            {
+                name: "Kerala",
+                capital: "Thiruvananthapuram",
+                capitalImg:"./kerala/capital.jpg",
+                dressing: "Mundu and Neryathu", 
+                dressingImg: "./kerala/dress.jpg",
+                food: "Appam and Stew",
+                foodImg:"./kerala/food.jpg",
+                touristSpot: "Munnar",
+                touristImg: "./kerala/munnar.jpg",
+                festival: "Onam",
+                festivalImg:"./kerala/festival.jpg",
+                river: "Periyar",
+                riverImg:"./kerala/periyar.jpg",
+                dance: "Kathakali",
+                danceImg:"./kerala/kathakali.jpg",
+                language: "Malayalam"
+
+                },
+            {
+                name: "Madhya Pradesh",
+                capital: "Bhopal",
+                capitalImg:"./madya/capital.jpg",
+                dressing: "Lehenga Dhoti",
+                dressingImg: "./madya/dress.jpg",
+                food: "Kusli", 
+                foodImg:"./madya/food.jpg",
+                touristSpot: "Gwalior",
+                touristImg: "./madya/tourist.jpg",
+                festival: "Khajuraho",
+                festivalImg:"./madya/tourist.jpg",
+                river: "Narmada",
+                riverImg:"./madya/river.jpg",
+                dance: "Gaur",
+                danceImg:"./madya/dance1.jpg",
+                language: "Hindi"
+
+                },
+            {
+                name: "Maharashtra",
+                capital: "Mumbai",
+                capitalImg:"./maha/capital.jpg",
+                dressing: "Paithani and Kurta",
+                dressingImg: "./maha/dress.jpg",
+                food: "Pav Bhaji", 
+                foodImg:"./maha/food.jpg",
+                touristSpot: "Gateway of India",
+                touristImg: "./maha/tourist.jpg",
+                festival: "Ganesh Chaturthi", 
+                festivalImg:"./maha/festival.jpg",
+                river: "Godavari",
+                riverImg:"./maha/river.jpg",
+                dance: "Lavani",
+                danceImg:"./maha/dance.jpg",
+                language: "Marathi"
+
+                },
+            {
+                name: "Manipur",
+                capital: "Imphal",
+                capitalImg:"./mani/capital.jpg",
+                dressing: "Phanek and Innaphi",
+                dressingImg: "./mani/dress.jpg", 
+                food: "Kangsoi", 
+                foodImg:"./mani/food.jpg",
+                touristSpot: "Loktak Lake",
+                touristImg: "./mani/tourist.jpg",
+                festival: "Yaoshang",
+                festivalImg:"./mani/festival.jpg",
+                river: "Barak River",
+                riverImg:"./mani/river.jpg",
+                dance: "Raas Leela",
+                danceImg:"./mani/dance.jpg",
+                language: "Manipuri" 
+                        },
+            {
+                name: "Meghalaya", 
+                capital: "Shillong",
+                capitalImg:"./megha/capital.jpg",
+                dressing: "Jainkup",
+                dressingImg:"./megha/dress.jpg",
+                food: "Jadoh", 
+                foodImg:"./megha/food.jpg",
+                touristSpot: "Shnongpdeng",
+                touristImg: "./megha/tourist.jpg",
+                festival: "Wangala",
+                festivalImg:"./megha/festival.jpg",
+                river: "Brahmaputra",
+                riverImg:"./megha/river.jpg", 
+                dance: "Nongkrem Dance", 
+                danceImg:"./megha/dance.jpg",
+                language: "Khasi"
+                     },
+            {
+                name: "Mizoram",
+                capital: "Aizawl",
+                capitalImg:"./mizoram/capital.jpg",
+                dressing: "Puan",
+                dressingImg: "./mizoram/dress.jpg",
+                food: "Rice", 
+                foodImg:"./mizoram/food.jpg",
+                touristSpot: "Lushai Hills",
+                touristImg: "./mizoram/tourist.jpg",
+                festival: "Chapchar Kut",
+                festivalImg:"./mizoram/festival.jpg",
+                river: "Tlawng",
+                riverImg:"./mizoram/river.jpg",
+                dance: "Cheraw",
+                danceImg:"./mizoram/dance.jpg",
+                language: "Mizo"
+
+                },
+            {
+                name: "Nagaland",
+                capital: "Kohima",
+                capitalImg:"./naga/capital.jpg",
+                dressing: "Alungstu",
+                dressingImg: "./naga/dress.jpg",
+                food: "Smoked Pork",
+                foodImg:"./naga/food.jpg",
+                touristSpot: "Kohima War Cemetery",
+                touristImg: "./naga/tourist.jpg",
+                festival: "Hornbill",
+                festivalImg:"./naga/festival.jpg",
+                river: "Dikhu", 
+                riverImg:"./naga/river.jpg",
+                dance: "Modse", 
+                danceImg:"./naga/dance.jpg",
+                language: "English"
+
+            },
+            { 
+                name: "Odisha",
+                capital: "Bhubaneswar",
+                capitalImg:"./odisha/capital.jpg",
+                dressing: "Saree and Dhoti",
+                dressingImg: "./odisha/dress.jpg",
+                food: "Dalma", 
+                foodImg:"./odisha/food.jpg",
+                touristSpot: "Konark Sun Temple",
+                touristImg: "./odisha/tourist.jpg",
+                festival: "Rath Yatra",
+                festivalImg:"./odisha/festival.jpg",
+                river: "Mahanadi",
+                riverImg:"./odisha/river.jpg",
+                dance: "Odissi",
+                danceImg:"./odisha/dance.jpg",
+                language: "Odia"
+
+            },
+            {
+                name: "Punjab",
+                capital: "Chandigarh",
+                capitalImg:"./punj/capital.jpg",
+                dressing: " Punjabi suit",
+                dressingImg: "./punj/dress.jpg",
+                food: "Sarson da Saag and Makki di Roti", 
+                foodImg:"./punj/food.jpg",
+                touristSpot: "Golden Temple",
+                touristImg: "./punj/tourist.jpg",
+                festival: "Lohri",
+                festivalImg:"./punj/festival.jpg",
+                river: "Sutlej", 
+                riverImg:"./punj/river.jpg",
+                dance: "Bhangra",
+                danceImg:"./punj/dance.jpg",
+                language: "Punjabi"
+
+            },
+            {
+                name: "Rajasthan",
+                capital: "Jaipur",
+                capitalImg:"./raja/capital.jpg",
+                dressing: " Ghagra and Kurta",
+                dressingImg: "./raja/dress.jpg",
+                food: "Dal Baati Churma",
+                foodImg:"./raja/food.jpg",
+                touristSpot: "Jaipur City Palace",
+                touristImg: "./raja/tourist.jpg",
+                festival: "Teej",
+                festivalImg:"./raja/festival.jpg",
+                river: "Chambal", 
+                riverImg:"./raja/river.jpg",
+                dance: "Ghoomar",
+                danceImg:"./raja/dance.jpg",
+                language: "Hindi" 
+
+                    },
+            {
+                name: "Sikkim", 
+                capital: "Gangtok", 
+                capitalImg:"./sik/capital.jpg",
+                dressing: "Bakhu",
+                dressingImg: "./sik/dress.jpg", 
+                food: "Momos",
+                foodImg:"./sik/food.jpg",
+                touristSpot: "Nathula Pass",
+                touristImg: "./sik/tourist.jpg", 
+                festival: "Losar",
+                festivalImg:"./sik/festival.jpg",
+                river: "Teesta",
+                riverImg:"./sik/river.jpg",
+                dance: "Lu Khangthamo",
+                danceImg:"./sik/dance.jpg",
+                language: "Nepali"
+
+                    },
+            {
+                name: "Tamil Nadu",
+                capital: "Chennai", 
+                capitalImg:"./tamil/capital.jpg",
+                dressing: "Saree and Dhoti", 
+                dressingImg: "./tamil/dress.jpg",
+                food: "Dosa",
+                foodImg:"./tamil/food.jpg",
+                touristSpot: "Meenakshi Temple",
+                touristImg: "./tamil/tourist.jpg", 
+                festival: "Pongal",
+                festivalImg:"./tamil/festival.jpg",
+                river: "Kaveri",
+                riverImg:"./tamil/river.jpg",
+                dance: "Bharatanatyam",
+                danceImg:"./tamil/dance.jpg",
+                language: "Tamil" 
+
+            },
+            {
+                name: "Telangana",
+                capital: "Hyderabad",
+                capitalImg:"./tel/capital.jpg",
+                dressing: "Saree and Sherwani",
+                dressingImg: "./tel/dress.jpg", 
+                food: "Biryani",
+                foodImg:"./tel/food.jpg",
+                touristSpot: "Charminar", 
+                touristImg: "./tel/tourist.jpg",
+                festival: "Bathukamma", 
+                festivalImg:"./tel/festival.jpg",
+                river: "Godavari",
+                riverImg:"./tel/river.jpg",
+                dance: "Mathuri Dance", 
+                danceImg:"./tel/dance.jpg",
+                language: "Telugu"
+
+            },
+            {
+                name: "Tripura",
+                capital: "Agartala",
+                capitalImg:"./trip/capital.jpg",
+                dressing: "Risa", 
+                dressingImg: "./trip/dress.jpg", 
+                food: "Macher Jhol", 
+                foodImg:"./trip/food.jpg",
+                touristSpot: "Ujjayanta Palace",
+                touristImg: "./trip/tourist.jpg", 
+                festival: "Kharchi",
+                festivalImg:"./trip/festival.jpg",
+                river: "Howrah",
+                riverImg:"./trip/river.jpg",
+                dance: "Hojagiri",
+                danceImg:"./trip/dance.jpg",
+                language: "Bengali"
+
+            },
+            {
+                name: "Uttar Pradesh",
+                capital: "Lucknow",
+                capitalImg:"./up/capital.jpg",
+                dressing: "Kurta and Dupatta",
+                dressingImg: "./up/dress.jpg",
+                food: "Tunday Kebab",
+                foodImg:"./up/food.jpg",
+                touristSpot: "Taj Mahal",
+                touristImg: "./up/tourist.jpg", 
+                festival: "Kumbh Mela", 
+                festivalImg:"./up/festival.jpg",
+                river: "Ganga",
+                riverImg:"./up/river.jpg",
+                dance: "Kathak",
+                danceImg:"./up/dance.jpg",
+                language: "Hindi"
+
+            },
+            {
+                name: "Uttarakhand",
+                capital: "Dehradun",
+                capitalImg:"./uk/capital.jpg",
+                dressing: "Garhwali",
+                dressingImg: "./uk/dress.jpg",
+                food: "Aloo Ke Gutke",
+                foodImg:"./uk/food.jpg",
+                touristSpot: "Nainital",
+                touristImg: "./uk/tourist.jpg",
+                festival: "Harela",
+                festivalImg:"./uk/festival.jpg",
+                river: "Ganga",
+                riverImg:"./uk/river.jpg",
+                dance: "Langvir",
+                danceImg:"./uk/dance.jpg", 
+                language: "Hindi" 
+
+            },
+            {
+                name: "West Bengal",
+                capital: "Kolkata",
+                capitalImg:"./wb/capital.jpg",
+                dressing: "Saree dhoti",
+                dressingImg: "./wb/dress.jpg",
+                food: "Macher Jhol",
+                foodImg:"./wb/food.jpg",
+                touristSpot: "Victoria Memorial",
+                touristImg: "./wb/tourist.jpg",
+                festival: "Durga Puja",
+                festivalImg:"./wb/festival.jpg",
+                river: "Jalangi River",
+                riverImg:"./wb/river.jpg",
+                dance: "Brita Dance",
+                danceImg:"./wb/dance.jpg",
+                language: "Bengali" 
+
+            }
+        ];
+
+        const stateGrid = document.getElementById('state-grid');
+
+        
+        statesData.forEach(state => {
+            const stateCard = document.createElement('div');
+            stateCard.classList.add('card');
+            stateCard.innerHTML = `<h2>${state.name}</h2>`;
+            
+            
+            stateCard.addEventListener("click", () => {
+                localStorage.setItem("selectedState", JSON.stringify(state)); 
+                window.location.href = "state.html"; 
+            });
+            
+            stateGrid.appendChild(stateCard);
+        });
+    </script>
+</body>
+</html>
